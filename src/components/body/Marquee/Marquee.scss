@@ -1,0 +1,42 @@
+.marquee{
+    display: flex;
+    overflow: hidden;
+    gap: 1rem;
+    position: relative;
+    user-select: none;
+    height: 35px;
+    background-color: rgba(0,0,0,0.8);
+    color: #fff;
+    padding-top: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.marquee-content{
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 100%;
+    gap: 1rem;
+}
+
+@keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 1rem));
+    }
+  }
+  
+  .scroll {
+    animation: scroll 15s linear infinite;
+  }
+  
+  .reverse {
+    animation-direction: reverse;
+  }
+
+  

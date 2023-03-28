@@ -1,5 +1,5 @@
 .nav-icon3{
-    width: 40px;
+    width: 35px;
     height: 35px;
     position: relative;
     margin: 15px auto;
@@ -20,7 +20,7 @@
   .nav-icon3 span{
     display: block;
     position: absolute;
-    height: 5px;
+    height: 4px;
     width: 100%;
     background: #000000;
     border-radius: 9px;
@@ -37,11 +37,11 @@
   }
 
 .nav-icon3 span:nth-child(1) {
-    top: 0px;
+    top: 4px;
   }
   
   .nav-icon3 span:nth-child(2),.nav-icon3 span:nth-child(3) {
-    top: 13px;
+    top: 15px;
   }
   
   .nav-icon3 span:nth-child(4) {
@@ -111,6 +111,28 @@
   }
 
 
+.carrito{
+  position: absolute;
+  top: 7px;
+  right: 0px;
+  background-color: #0e0d0df8;
+}
 
 
+.carrito-mobile{
+  @media(max-width: 1000px){
+    display: flex;
+    align-items: center;
+    }
+}
   
+
+.btn-carrito{
+  display: block;
+  @media(max-width: 1000px){
+    right: 19px;
+    top: 2px;
+    display: block;
+    }
+}
+
