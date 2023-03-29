@@ -2,14 +2,9 @@ import React from 'react';
 import './NavBar.scss';
 
 
-
-
-
 function BurguerButton(props) {
     return (
-    // eslint-disable-next-line react/prop-types
     <div className={`nav-icon3 ${props.clicked ? 'open' : '' }`}
-        // eslint-disable-next-line react/prop-types
         onClick={props.handleClick}>
         <span></span>
         <span></span>
@@ -18,7 +13,9 @@ function BurguerButton(props) {
     </div>
     );
 }
-export const NavBar = () => {  
+
+
+const NavBar = () => {  
     const [clicked, setClicked] = React.useState(false);
     const handleClick = () => {
         setClicked(!clicked);

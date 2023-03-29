@@ -6,12 +6,17 @@ import Cards from './components/body/Cards/Card'
 import Footer from './components/Footer/Footer'
 import Marquee from './components/body/Marquee/Marquee'
 import Band from './components/body/Bands/Band'
+import ItemListContainer from './components/body/ItemListContainer/ItemListContainer'
+
+
+
 function App() {
 
   return (
     <div className="App">
       <Marquee/>
       <NavBar/>
+      <ItemListContainer greeting="Bienvenido a xBRAVE"/>
       <Hero/>
       <Band/>
       <Cards/>
