@@ -1,0 +1,59 @@
+.offcanvas{
+    width: 100%;
+    padding: 4px;
+    .offcanvas-title{
+        font-weight:600;
+    }
+    .offcanvas-body{
+        .sub-title{
+            font-size: 14px;
+        }
+        .valor{
+            display: flex;
+            justify-content: end;
+        }
+
+        .btn-form-enviar{
+            border: 1px solid gray;
+            width: 100%;
+            height: 40px;
+            border-radius: 6px;
+        }
+        .bord-form{
+            height: 40px;
+            width: 100%;
+            border-bottom: 3px solid gray;
+            outline: 0;
+        }
+        .btn-form-comprar{
+            background-color: black;
+            color: white;
+            width: 100%;
+            height: 40px;
+            border-radius: 6px;
+        }
+        .pad-btn{
+            @media (max-width: 767px) {
+                padding-top: 14px;
+            }
+        }
+
+        .cant{
+            font-size: 12px;
+        }
+        .foto{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            height: 103px;
+            max-height: 550px;
+            background-size: contain;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-image: url(./remera-estructura-acid_011-04288ea6818d1759be16796022855860-480-0.jpg);
+        }
+
+    }
+}

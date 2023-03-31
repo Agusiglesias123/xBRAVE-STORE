@@ -1,0 +1,67 @@
+.cards-ordenar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url(./remera-vip2000-negro_011-f26de8de84fab5710716796023530910-480-0.jpg);
+    height: 550px;
+    max-height: 550px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    @media(max-width:  992px){
+        height:270px ;
+    }
+}
+
+.pad-card{
+    @media(min-width:  992px){
+        padding-left: 8rem;
+    }
+
+}
+
+.font-mobile{
+    @media(max-width:  992px){
+        font-size: 1rem !important;
+    }
+}
+
+.mostrar-botones{
+    background-color: black;
+    color: white;
+    height: 49px;
+    width: 46%;
+    border-radius: 7px;
+    @media(max-width:  992px){
+        display: none;
+    }
+}
+.btn-ver{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+
+
+.center-card{
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.foto:hover > .center-card{
+    visibility: visible;
+    opacity: 0.8;
+}
+
+
+.font-desc{
+    color: red;
+    font-size: 14px;
+    @media(max-width:  992px){
+        font-size: 0.75rem;
+    }
+}
