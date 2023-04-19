@@ -41,19 +41,16 @@
         .cant{
             font-size: 12px;
         }
-        .foto{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-            height: 103px;
-            max-height: 550px;
-            background-size: contain;
-            overflow: hidden;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            background-image: url(./remera-estructura-acid_011-04288ea6818d1759be16796022855860-480-0.jpg);
+
+        .title-envio{
+            font-size: 14px;
+        }
+        .bg-env{
+            background-color: #e08001;
         }
 
+    }
+    .bord{
+        border-bottom: 1px solid #afafaf9c;
     }
 }

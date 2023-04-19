@@ -1,35 +1,42 @@
 import React from 'react'
 import './Carrito.scss'
+// import ItemCount from '../ItemCount/ItemCount'
+import logo from '../../../assets/FONDOBLANCO.png'
+import CardCompra from '../Cards/CardCompra'
 
 function Carrito() {
   return (
     <div className=''>
-        <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div className="offcanvas offcanvas-start " data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div className="offcanvas-header">
                 <h5 className="offcanvas-title" id="offcanvasScrollingLabel">CARRITO DE COMPRAS</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div className="offcanvas-body">
-                <div className="col-12">
-                    <div className="row">
-                        <div className="col-md-3 col-3 col-sm-3">
-                            <h4 className='foto'></h4>
-                        </div>
-                        <div className="col-md-5 col-5 col-sm-5">
-                            <h1 className='fw-medium'>Remera</h1>
-                            <h4 className='cant'>(1)</h4>
-                            <h4 className='d-none d-md-block fw-medium'>$14000</h4>
-                        </div>
-                        <div className='col-md-2 col-3  col-sm-2'>
-                            <h4 className='fw-medium'>$29000</h4>
-                        </div>
-                        <div className="col-md-2 col-1 col-sm-1">
-                        <i className="bi bi-trash-fill"></i>
-                        </div>
+            <div className="row py-2">
+                <div className="col-6 d-flex px-4 pb-1">
+                    <h5>
+                        Producto
+                    </h5>
+                </div>
+                <div className="col-6 d-flex justify-content-end px-4 ">
+                    <h5>
+                        Subtotal
+                    </h5>
+                </div>
+            </div>
 
+            <div className="offcanvas-body">
+            <CardCompra />      
+                <div className="row pb-4 ">
+                    <div className="col-8 col-sm-9 d-flex text-light p-3 align-items-center fw-bold bg-env">
+                        <h5 className='fw-bold  title-envio'>
+                        TENÉS ENVÍO GRATIS!
+                        </h5>
+                    </div>
+                    <div className="col-4 col-sm-3 bg-env align-items-center d-flex">
+                        <img src={logo} alt="" />
                     </div>
                 </div>
-                <hr />
                 <div className='row'>
                     <h5 className='pb-4 col-3  fw-medium'>Subtotal</h5> 
                     <p className='sub-title col-4'>(sin envío) :</p>

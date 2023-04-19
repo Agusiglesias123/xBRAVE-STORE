@@ -6,6 +6,7 @@ function Hero() {
     return(
         <div className="hero">
             <div className=" text-center centrar-hero">
+                
             </div>
         </div>
 

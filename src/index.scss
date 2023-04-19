@@ -57,6 +57,7 @@ html {
 
 /* Desactivamos estilos por defecto de las principales etiquetas de texto */
 h1 , h2 , h3 , h4 , h5 , h6 , p ,span , a , strong , blockquote , i , b , u , em {
+  margin-bottom: inherit;
   font-size: inherit;
   font-weight: inherit;
   font-style: inherit;
