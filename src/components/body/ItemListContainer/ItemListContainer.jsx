@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './ItemListContainer.scss'
-import { mFetch } from "../../../utils/mFetch"
-import { Link, useParams } from 'react-router-dom';
+// import { mFetch } from "../../../utils/mFetch"
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
+import { useParams } from 'react-router-dom';
+import { useCounter } from '../../../hooks/useCounter';
+import ItemList from '../ItemList/ItemList';
+import Loading from '../../Loading/Loading';
+
 
 
 
@@ -12,61 +17,42 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const [loading, setLoading] = useState(true)
   const {categoria} = useParams()
+  const onAdd = (cantidad) => {
+    console.log('se agrego', cantidad, 'productos')
+  }
+  const {contador} = useCounter()
+
 
 
   useEffect(() => { 
     if(!categoria){
-        mFetch()
-        .then((res)=>{
-          setProductos(res)
-        })
-        .catch((err)=>{
-          console.log(err)
-        })
-        .finally(()=>{
-          setLoading(false)
-        })
+        const dbFireStore = getFirestore()
+        const queryCollection = collection(dbFireStore, 'Productos')
+    
+        getDocs(queryCollection)
+        .then( res => setProductos( res.docs.map( producto => ({ id : producto.id, ...producto.data() }) ) ) )
+        .catch( err => console.log(err) )
+        .finally( () => setLoading(false) )
     }else{
-      mFetch()
-      .then((res)=>{
-          setProductos(res.filter(producto =>producto.categoria === categoria))
-        })
-        .catch((err)=>{
-          console.log(err)
-        })
-        .finally(()=>{
-          setLoading(false)
-        })
-      }
+      const dbFireStore = getFirestore()
+      const queryCollection = collection(dbFireStore, 'Productos')
+      const queryCollectionCategoria = query(queryCollection, where('categoria', '==', categoria))
+  
+      getDocs(queryCollectionCategoria)
+      .then( res => setProductos( res.docs.map( producto => ({ id : producto.id, ...producto.data() }) ) ) )
+      .catch( err => console.log(err) )
+      .finally( () => setLoading(false) )
+    }
   }, [categoria])
 
 
-  console.log(categoria)
 
   return (
     <div className="Card-father container">
       <div className=' Card row d-flex justify-content-center'>
       { loading ? 
-        <h2 className='text-center fs-4 py-5'>Cargando..</h2>
-      :  productos.map(({id, nombre,precio}) => 
-          <div  key={id} className='col-md-6 col-lg-4  col-12 d-flex justify-content-center'>
-              <div className=" row py-4">
-                  <div  className=" foto ">
-                      <div className=" cards-ordenar"></div>
-                      <div className="row foto px-4 justify-content-center">
-                          <div className="col-12 fw-normal">{nombre}</div>
-                          <div className="col-12 fw-bold fs-5 font-mobile">${precio}</div>
-                          <div className="col-12 font-desc fw-medium ">6 cuotas sin interes de $2.416</div>
-                          <div className="container center-card row pt-2">
-                              <button type="button" className="mostrar-botones me-3 col-6 btn-sm">COMPRAR</button>
-                              <Link className='mostrar-botones btn-ver col-6  btn-sm' to={`/detalles/${id}`}>
-                              <button type="button" className=" "> <i className="bi pe-1 bi-eye p"></i>VER</button>
-                              </Link>
-                          </div>
-                      </div>
-                </div>
-              </div> 
-          </div>)}
+              <Loading/>
+      : <ItemList productos={productos} onAdd={onAdd} contador={contador}   /> }
         </div>
      </div>
   )
@@ -75,4 +61,6 @@ const ItemListContainer = () => {
 
  
 export default ItemListContainer
+
+
 

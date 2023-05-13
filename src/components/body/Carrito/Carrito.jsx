@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Carrito.scss'
 // import ItemCount from '../ItemCount/ItemCount'
 import logo from '../../../assets/FONDOBLANCO.png'
 import CardCompra from '../Cards/CardCompra'
+import { useCartContext } from '../../../Context/CartContext'
 
 function Carrito() {
+    const {getTotal} = useCartContext()
+    const [showMessage, setShowMessage] = useState(false);
+  
+    useEffect(() => {
+      if (getTotal() >= 25000) {
+        setShowMessage(true);
+      } else {
+        setShowMessage(false);
+      }
+    }, [getTotal])
   return (
     <div className=''>
         <div className="offcanvas offcanvas-start " data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
@@ -27,6 +38,7 @@ function Carrito() {
 
             <div className="offcanvas-body">
             <CardCompra />      
+                {showMessage && 
                 <div className="row pb-4 ">
                     <div className="col-8 col-sm-9 d-flex text-light p-3 align-items-center fw-bold bg-env">
                         <h5 className='fw-bold  title-envio'>
@@ -37,15 +49,16 @@ function Carrito() {
                         <img src={logo} alt="" />
                     </div>
                 </div>
-                <div className='row'>
+                }
+                <div className='row py-3'>
                     <h5 className='pb-4 col-3  fw-medium'>Subtotal</h5> 
                     <p className='sub-title col-4'>(sin envío) :</p>
                     <div className="col-5 valor">
-                        <h4 className='fw-bold fs-5'>29.000</h4>
+                        <h4 className='fw-bold fs-5'>${getTotal()}</h4>
                     </div>
                     <h5 className='pb-1 '><i className="bi bi-truck fs-5 pe-1 "></i>Elegí nuestras opciones de envío </h5>
                     <div className="col-6">
-                        <input className='bord-form' type="tel" value="" placeholder='Codigo Postal' />
+                        <input className='bord-form' type="tel"  placeholder='Codigo Postal' />
                     </div>
                     <div className="col-6">
                         <button className='btn-form-enviar sub-title' type="submit">CALCULAR ENVIO</button>
@@ -57,7 +70,7 @@ function Carrito() {
                         <h1 className='fs-4 fw-bold'>Total:</h1>
                     </div>
                     <div className="col-6 valor">
-                        <h4 className='fw-bold fs-5'>29.000</h4>
+                        <h4 className='fw-bold fs-5'>${getTotal()}</h4>
                     </div>
                 </div>
                 <div className="row d-flex align-items-center">

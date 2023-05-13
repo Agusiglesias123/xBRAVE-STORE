@@ -7,15 +7,14 @@ export const useCounter = (initial = 0, min, max) => {
         if (contador < max) {
             setContador(contador + 1)
         }
-        console.log('incrementar')
     }
     
     const decrementar = () => {
         if (contador > min) {
             setContador(contador - 1)
         }
-        console.log('decrementar')
     }
+    
      
     return {contador, incrementar, decrementar}
 

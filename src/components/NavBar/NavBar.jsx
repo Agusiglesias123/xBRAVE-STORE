@@ -36,13 +36,13 @@ const NavBar = () => {
             <div className="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul className={`navbar-nav ${clicked ? 'active' : ''}`}>
                     <li className="nav-item">
-                        <NavLink className={  ({isActive})=> isActive ? 'nav-link bg-warning' : 'nav-link'  } to="/categoria/remeras">NEW</NavLink>
+                        <NavLink className={  ({isActive})=> isActive ? 'nav-link hoverNav' : 'nav-link'  } to="/categoria/remeras">NEW</NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/">SHOP</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/categoria/accesorios" className={  ({isActive})=> isActive ? 'nav-link bg-warning' : 'nav-link'  }>ACCESORIES</NavLink>
+                        <NavLink to="/categoria/accesorios" className={  ({isActive})=> isActive ? 'nav-link hoverNav' : 'nav-link'  }>ACCESORIES</NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/">FAQs</NavLink>

@@ -10,29 +10,54 @@ import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-do
 // import Compra from './Routes/Compra'
 // import Formulario from './components/body/Formulario/Formulario'
 import ItemDetailContainer from './components/body/ItemDetailContainer/ItemDetailContainer'
+import { ToastContainer} from 'react-toastify';
 import Notfound404 from './components/404notfound/Notfound404'
+import { CartContextProvider } from './Context/CartContext'
+
+function HomePage() {
+  return (
+    <>
+      <Hero/>
+      <Band/>
+      <ItemListContainer/>
+      <Footer/>
+    </>
+  );
+}
+
+
 
 function App() {
 
   return (
+  <CartContextProvider>
+              <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+           />  
     <Router className="App">
       <Marquee/>
       <NavBar/>
-      <Hero/>
-      <Band/>
       <Carrito/>
       <Routes>
-        <Route path='/' element={<ItemListContainer/>}/>
-        <Route path='/categoria/:categoria' element={<ItemListContainer/>}/>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/categoria/:categoria' element={<HomePage/>}/>
         <Route path='/detalles/:pid' element={<ItemDetailContainer/>}/>
 
-        <Route path='notfound' element={<Notfound404/>}/>
-        <Route path='*' element={<Navigate to='/notfound'/> }/>
 
+        <Route path='/notfound' element={<Notfound404/>}/>
+        <Route path='*' element={<Navigate to='/notfound'/> }/>
       </Routes>
-      {/* <Formulario/> */}
-      <Footer/>
     </Router>
+  </CartContextProvider> 
   )
 }
 
