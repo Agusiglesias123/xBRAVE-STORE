@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Carrito.scss'
-// import ItemCount from '../ItemCount/ItemCount'
 import logo from '../../../assets/FONDOBLANCO.png'
 import CardCompra from '../Cards/CardCompra'
 import { useCartContext } from '../../../Context/CartContext'
+import { Link } from 'react-router-dom'
 
 function Carrito() {
-    const {getTotal} = useCartContext()
+    const {getTotal, cart} = useCartContext()
     const [showMessage, setShowMessage] = useState(false);
   
     useEffect(() => {
@@ -16,8 +16,15 @@ function Carrito() {
         setShowMessage(false);
       }
     }, [getTotal])
+    const totalFinal = getTotal().toLocaleString('es-AR')
+
+
+    
+
+
+
   return (
-    <div className=''>
+    <div>
         <div className="offcanvas offcanvas-start " data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div className="offcanvas-header">
                 <h5 className="offcanvas-title" id="offcanvasScrollingLabel">CARRITO DE COMPRAS</h5>
@@ -37,7 +44,13 @@ function Carrito() {
             </div>
 
             <div className="offcanvas-body">
-            <CardCompra />      
+                {
+                    cart.length === 0 ?
+                    <h1 className='text-center fs-5 py-4'>No hay productos en el carrito</h1>
+                    :
+                    <CardCompra />      
+                }
+            
                 {showMessage && 
                 <div className="row pb-4 ">
                     <div className="col-8 col-sm-9 d-flex text-light p-3 align-items-center fw-bold bg-env">
@@ -54,7 +67,7 @@ function Carrito() {
                     <h5 className='pb-4 col-3  fw-medium'>Subtotal</h5> 
                     <p className='sub-title col-4'>(sin envío) :</p>
                     <div className="col-5 valor">
-                        <h4 className='fw-bold fs-5'>${getTotal()}</h4>
+                        <h4 className='fw-bold fs-5'>${totalFinal}</h4>
                     </div>
                     <h5 className='pb-1 '><i className="bi bi-truck fs-5 pe-1 "></i>Elegí nuestras opciones de envío </h5>
                     <div className="col-6">
@@ -70,15 +83,19 @@ function Carrito() {
                         <h1 className='fs-4 fw-bold'>Total:</h1>
                     </div>
                     <div className="col-6 valor">
-                        <h4 className='fw-bold fs-5'>${getTotal()}</h4>
+                        <h4 className='fw-bold fs-5'>${totalFinal}</h4>
                     </div>
                 </div>
                 <div className="row d-flex align-items-center">
                     <div className="col-12 col-md-6 d-flex ">
-                        <button className='btn-form-comprar sub-title' type="submit">INICIAR COMPRA</button>
+                        <Link className='btn-form-comprar sub-title d-flex justify-content-center' to='/compra'>
+                            <button type="submit" data-bs-dismiss="offcanvas" aria-label="Close">INICIAR COMPRA</button>
+                        </Link>
                     </div>
                     <div className="col-12 col-md-6 d-flex justify-content-center ">
-                        <button className='sub-title pad-btn text-decoration-underline'>SEGUIR COMPRANDO</button>
+                        <Link to='/'>
+                            <button className='sub-title pad-btn text-decoration-underline'>SEGUIR COMPRANDO</button>
+                        </Link>
                     </div>
                 </div>
             </div>

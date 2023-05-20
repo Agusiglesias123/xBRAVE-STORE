@@ -13,9 +13,7 @@ export const useCartContext = () => useContext(CartContext)
 export const CartContextProvider = ({children}) => {
    
     const [cart, setCart] = useState([])
-    const vaciarCarrito = () => setCart([])
-    // eslint-disable-next-line no-unused-vars
-    const [envioGratis, setEnvioGratis] = useState([false])
+    const emptyCart = () => setCart([])
 
 
     const getTotal = () => {
@@ -25,24 +23,13 @@ export const CartContextProvider = ({children}) => {
         total += productData;
       });
 
-      if (total >= 25000) {
-        setEnvioGratis(true)
-      } else {
-        setEnvioGratis(false)
-      }
-
       return total;
     };
 
 
 
-    
 
-
-
-    // const precioTotal = cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
     const addToCart = (newProduct) => {
-      // logica de producto repetido
       if (!isInCart(newProduct.id)) {
         setCart([...cart, newProduct])
       } else {
@@ -58,7 +45,7 @@ export const CartContextProvider = ({children}) => {
 
     const removeItem = (id) => {
       setCart(cart.filter(item => item.id !== id))
-    }// logica de eliminar por item
+    }
 
     const isInCart = (id) => {
       return cart.some((item) => item.id === id)
@@ -84,7 +71,7 @@ export const CartContextProvider = ({children}) => {
         cart,
         addToCart,
         removeItem,
-        vaciarCarrito,
+        emptyCart,
         notify,
         getTotal,
         

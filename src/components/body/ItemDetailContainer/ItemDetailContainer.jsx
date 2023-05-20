@@ -9,13 +9,7 @@ function ItemDetailContainer() {
   const [producto, setProducto] = useState([])
   const [loading, setLoading] = useState(true)
   const {pid} = useParams()
-
-  // useEffect(() => {
-  //   mFetch(pid)
-  //   .then(res => setProducto(res))
-  //   .catch(err => console.log(err))
-  //   .finally (() => setLoading(false))
-  // }, [])
+  
   useEffect(()=> {
     const dbFireStore = getFirestore()
     const queryDoc = doc(dbFireStore, 'Productos', pid)

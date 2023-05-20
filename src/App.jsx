@@ -7,12 +7,12 @@ import Band from './components/body/Bands/Band'
 import ItemListContainer from './components/body/ItemListContainer/ItemListContainer'
 import Carrito from './components/body/Carrito/Carrito'
 import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
-// import Compra from './Routes/Compra'
-// import Formulario from './components/body/Formulario/Formulario'
 import ItemDetailContainer from './components/body/ItemDetailContainer/ItemDetailContainer'
 import { ToastContainer} from 'react-toastify';
 import Notfound404 from './components/404notfound/Notfound404'
 import { CartContextProvider } from './Context/CartContext'
+import CheckOut from './components/body/CheckOut/CheckOut'
+// import FormAgregarProducto from './components/body/FormAgregarProducto/FormAgregarProducto'
 
 function HomePage() {
   return (
@@ -20,7 +20,15 @@ function HomePage() {
       <Hero/>
       <Band/>
       <ItemListContainer/>
-      <Footer/>
+      {/* Este formulario es para agregar un nuevo producto a la base de datos */}
+          {/* <FormAgregarProducto/> */}
+    </>
+  );
+}
+function CheckOutPage() {
+  return (
+    <>
+      <CheckOut/>
     </>
   );
 }
@@ -51,11 +59,13 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/categoria/:categoria' element={<HomePage/>}/>
         <Route path='/detalles/:pid' element={<ItemDetailContainer/>}/>
+        <Route path='/compra' element={<CheckOutPage/>}/>
 
 
         <Route path='/notfound' element={<Notfound404/>}/>
         <Route path='*' element={<Navigate to='/notfound'/> }/>
       </Routes>
+      <Footer/>
     </Router>
   </CartContextProvider> 
   )

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './ItemListContainer.scss'
-// import { mFetch } from "../../../utils/mFetch"
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { useParams } from 'react-router-dom';
 import { useCounter } from '../../../hooks/useCounter';
@@ -17,9 +16,6 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const [loading, setLoading] = useState(true)
   const {categoria} = useParams()
-  const onAdd = (cantidad) => {
-    console.log('se agrego', cantidad, 'productos')
-  }
   const {contador} = useCounter()
 
 
@@ -52,7 +48,7 @@ const ItemListContainer = () => {
       <div className=' Card row d-flex justify-content-center'>
       { loading ? 
               <Loading/>
-      : <ItemList productos={productos} onAdd={onAdd} contador={contador}   /> }
+      : <ItemList productos={productos} contador={contador}   /> }
         </div>
      </div>
   )

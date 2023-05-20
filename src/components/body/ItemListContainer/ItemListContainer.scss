@@ -9,9 +9,9 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
-    @media(max-width:  992px){
-        height:270px ;
-    }
+    // @media(max-width:  992px){
+    //     height:270px ;
+    // }
 }
 
 .pad-card{
@@ -36,9 +36,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // @media(max-width:  992px){
-    //     display: none;
-    // }
 }
 .btn-ver{
     background-color: white;
@@ -56,7 +53,7 @@
 
 .foto:hover > .center-card{
     visibility: visible;
-    opacity: 0.8;
+    transition: all 4s ease-in-out;
 }
 
 
