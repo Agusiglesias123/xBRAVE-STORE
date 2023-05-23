@@ -24,7 +24,7 @@ const NavBar = () => {
         setClicked(!clicked);
     };
     return (
-    <nav className="navbar navbar-expand-lg py-3" >
+    <nav className="navbar sticky-top color navbar-expand-lg py-2" >
         <div className="container ">
             <Link className="navbar-brand  fs-3" to='/'>xBRAVE</Link>
             <div className='carrito-mobile d-lg-none'>

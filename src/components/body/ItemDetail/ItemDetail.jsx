@@ -3,6 +3,7 @@ import './ItemDetail.scss'
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../../Context/CartContext';
+import { motion } from "framer-motion"
 
 export const ItemDetail = ({producto}) => {
   const [isCantidad, setIsCantidad] = useState(false)
@@ -31,21 +32,24 @@ export const ItemDetail = ({producto}) => {
                     <h1 className='fs-5 py-2 d-flex align-content-center justify-content-center'>${producto.precio.toLocaleString('es')}</h1>
                   </div>
                   <div className="col-12">
-                    <div  className='font d-flex  justify-content-center py-5'>
+                    <div  className='font d-flex  justify-content-center py-3'>
                       <div className='font-padd'>HASTA 6 CUOTAS</div>
                       <div>
                         <a className='font text-decoration-underline ' href="">VER MEDIOS DE PAGO</a>
                       </div>
                     </div>
                   </div>
-                  <div className="col-12 ">
+                  <div className="col-12 py-2">
                     {
                       !isCantidad ?
                       <ItemCount  onAdd={onAdd}/>
                       :
-                      <div className='d-flex justify-content-center align-content-center py-2'>
-                        <Link className='mostrar-botones ' to={"/"}>SEGUIR COMPRANDO</Link>
-                      </div>
+                      <motion.div 
+                      whileHover={{ scale: 1.1 }}
+                      hileTap={{ scale: 0.9 }} 
+                      className='d-flex justify-content-center align-content-center'>
+                        <Link className='mostrar-botones-det ' to={"/"}>SEGUIR COMPRANDO</Link>
+                      </motion.div>
                     }
                   </div>
                   <div className="col-12  justify-content-center d-flex pb-2">
@@ -57,8 +61,8 @@ export const ItemDetail = ({producto}) => {
                   <div className='col-12  justify-content-center d-flex py-5'>
                     {producto.descripcion}
                   </div>
-                  <div className="col-12  py-4 container">
-                    <div className="accordion w-100 container" id="accordionPanelsStayOpenExample">
+                  <div className="col-12  py-4 ">
+                    <div className="accordion w-100 " id="accordionPanelsStayOpenExample">
                       <div className="accordion-item">
                         <h2 className="accordion-header">
                           <button className="accordion-button bg-light focus-ring focus-ring-light" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">

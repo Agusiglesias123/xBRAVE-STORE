@@ -4,6 +4,7 @@ import logo from '../../../assets/FONDOBLANCO.png'
 import CardCompra from '../Cards/CardCompra'
 import { useCartContext } from '../../../Context/CartContext'
 import { Link } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 function Carrito() {
     const {getTotal, cart} = useCartContext()
@@ -87,11 +88,16 @@ function Carrito() {
                     </div>
                 </div>
                 <div className="row d-flex align-items-center">
-                    <div className="col-12 col-md-6 d-flex ">
-                        <Link className='btn-form-comprar sub-title d-flex justify-content-center' to='/compra'>
-                            <button type="submit" data-bs-dismiss="offcanvas" aria-label="Close">INICIAR COMPRA</button>
-                        </Link>
-                    </div>
+                    <motion.div 
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }} className="col-12 col-md-6 d-flex ">
+                        <Link className='btn-form-comprar sub-title d-flex align-items-center justify-content-center' to='/compra'>
+                        <button
+                         className='' type="submit" data-bs-dismiss="offcanvas" aria-label="Close">
+                                    INICIAR COMPRA
+                        </button>
+                            </Link>
+                    </motion.div>
                     <div className="col-12 col-md-6 d-flex justify-content-center ">
                         <Link to='/'>
                             <button className='sub-title pad-btn text-decoration-underline'>SEGUIR COMPRANDO</button>

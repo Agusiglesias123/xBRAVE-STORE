@@ -5,6 +5,7 @@ import './ChekOut.scss'
 import CardCheckOut from '../Cards/CardCheckOut'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { motion } from "framer-motion"
 
 const CheckOut = () => {
     const [orden, setOrden] = useState(false)
@@ -92,7 +93,10 @@ const CheckOut = () => {
                                             <input type="email" name='repetirEmail' value={dataForm.repetirEmail} className="form-control" onChange={handleOnChange} required></input>
                                         </div>
                                         
-                                        <button  type="submit" className="mostrar-botones">Crear Orden</button>
+                                        <motion.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
+                                          type="submit" className="mostrar-botones">Crear Orden</motion.button>
                                     </form>
                                     
                                 </div>
